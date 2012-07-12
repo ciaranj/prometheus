@@ -14,9 +14,9 @@ app.configure(function(){
   app.set('view engine', 'jade');
   app.use(express.bodyParser());
   app.use(express.methodOverride());
-  app.use(express.compiler({ src: __dirname + '/public', enable: ['less'] }));
-  app.use(app.router);
+  app.use(require('less-middleware')({ src: __dirname + '/public' }));
   app.use(express.static(__dirname + '/public'));
+  app.use(app.router);
 });
 
 app.configure('development', function(){
@@ -31,6 +31,12 @@ app.configure('production', function(){
 
 app.get('/', function(req, res){
   res.render('index', {
+    title: 'Express'
+  });
+});
+
+app.get('/other', function(req, res){
+  res.render('other', {
     title: 'Express'
   });
 });
