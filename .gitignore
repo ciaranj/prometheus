@@ -1,2 +1,5 @@
 node_modules/
 vendor/bootstrap/less/*.css
+web.config
+robots.txt
+app.js.logs
