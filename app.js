@@ -27,18 +27,25 @@ app.configure('production', function(){
   app.use(express.errorHandler()); 
 });
 
-// Routes
+var pages= [ {id:"/", title:"Home"}
+            ,{id:"/blog", title:"Blog"}
+            ,{id:"/contact", title:"Contact"}              
+           ];
 
-app.get('/', function(req, res){
-  res.render('index', {
-    title: 'Express'
+var displayPage= function( res, viewName, pageName ) {
+  res.render( viewName, {
+    title: 'Express',
+    pages: pages,
+    currentPage: pageName
   });
+}
+// Routes
+app.get('/', function(req, res){ 
+  displayPage( res, "index", "/" );
 });
 
-app.get('/other', function(req, res){
-  res.render('other', {
-    title: 'Express'
-  });
+app.get('/blog', function(req, res){
+  displayPage( res, "blog", "/blog" );
 });
 
 app.listen(3000);

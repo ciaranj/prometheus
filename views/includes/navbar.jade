@@ -8,12 +8,7 @@ div.navbar.navbar-fixed-top
             a(href='#').brand #{title}
             div.nav-collapse
                 ul.nav
-                    li
-                        a(href='/') Home
-                    li.active
-                        a(href='#') Blog
-                    li
-                        a(href='#') Contact
-div.container
-    footer
-        p &copy; Company 2011
+                  - each page, i in pages
+                    - var isActive= (page.id == currentPage ) ? "active" : "";
+                    li(class= isActive)
+                        a(href= page.id )= page.title

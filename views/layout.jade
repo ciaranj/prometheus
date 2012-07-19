@@ -2,5 +2,11 @@
 html
   head
     title= title
-    include ./includes/bootstrap
-  body!= body
+    include ./includes/cssincludes
+  body
+    include ./includes/navbar
+    div.container
+      != body
+      include ./includes/footer
+    include ./includes/jsincludes
+  
