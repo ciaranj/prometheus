@@ -15,7 +15,9 @@ app.configure(function(){
   app.use(express.bodyParser());
   app.use(express.methodOverride());
   app.use(require('less-middleware')({ src: __dirname + '/public' }));
+  app.use(require('less-middleware')({ src: __dirname + '/vendor/bootstrap/less' }));
   app.use(express.static(__dirname + '/public'));
+  app.use(express.static(__dirname + '/vendor/bootstrap/less'));
   app.use(app.router);
 });
 
